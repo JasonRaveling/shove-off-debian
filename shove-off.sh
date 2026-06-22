@@ -28,7 +28,7 @@ apt_packages_required=(
 # Some packages need third party repos to be added prior to running apt
 # install. These are noted below.
 apt_packages=(
-	dbeaver-ce # Third party repo
+	dbeaver-ce # Third party repo will be configured
 	dnsutils
 	libnss3-tools # For certutil
 	openssl
@@ -36,8 +36,8 @@ apt_packages=(
 	php-cli
 	php-xmlwriter
 	poppler-utils
-	sublime-text # third party repo
-	sublime-merge # third party repo
+	sublime-text # third party repo will be configured
+	sublime-merge # third party repo will be configured
 	whois
 );
 
@@ -45,7 +45,7 @@ apt_packages=(
 # more manual way. A value of 1 will flag that the app should be
 # downloaded and installed.
 heidisql=1
-mapillary_desktop=0
+mapillary_desktop=1
 nvm=1
 svgo=1
 teams_for_linux=1
@@ -62,6 +62,13 @@ git_repo_dir="$HOME/gitrepos"
 green='\033[0;32m'
 red='\033[0;31m'
 reset='\033[0m'
+
+
+##########################################################################
+##########################################################################
+##### DO NOT EDIT BELOW THIS LINE
+##########################################################################
+##########################################################################
 
 
 ##########################################################################
@@ -419,9 +426,11 @@ fi
 ##########################################################################
 
 # WPCLI Scripts
+# https://github.com/JasonRaveling/wpcli-scripts
 git clone git@github.com:JasonRaveling/wpcli-scripts.git "${git_repo_dir}/wpcli-scripts"
 
 # Watch Sync
+# https://github.com/JasonRaveling/watch-sync
 git clone git@github.com:JasonRaveling/watch-sync.git "${git_repo_dir}/watchsync"
 
 
@@ -445,4 +454,3 @@ sudo apt -y install "${apt_packages[@]}";
 echo 'Cleaning up temp files...'
 cd && rm -rf "${tmp_dir}"
 exit 0;
-
